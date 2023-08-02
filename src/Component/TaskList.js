@@ -11,7 +11,7 @@ const TaskList = () => {
     return(
         <ul>
             {tasks && tasks.map(task=>(
-                <li key={task.id}>{task.name} <button className="deleteButton" onClick={()=>{deletetask(task.id)}}>X</button></li>
+                <li key={task.id}> <span className="tasklist">{task.name}</span> <button className="deleteButton" onClick={()=>{deletetask(task.id)}}>X</button></li>
             ))}
         </ul>
     );

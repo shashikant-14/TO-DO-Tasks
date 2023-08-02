@@ -7,7 +7,7 @@ function App() {
   return (
     <div>
       <Task/>
-      {/* <TaskList/> */}
+      <TaskList/>
     </div>
   );
 }

@@ -4,6 +4,9 @@ ul{
 }
 li{
     list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     width: 200px;
     border:1px solid black;
     padding:5px;
@@ -16,4 +19,9 @@ li::before{
 
 li .deleteButton{
     float: right;
+}
+
+li .tasklist{
+    display: flex;
+    width:70%;
 }
