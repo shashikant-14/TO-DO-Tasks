@@ -11,13 +11,26 @@ const Task = () => {
         console.log(inputRef.current.value)
         inputRef.current.value = '';
     }
-
-    useEffect(()=>{
+    const handleKeyDown = (e) => {
+        console.log(e.keyCode);
+        if (e.keyCode >= 49 && e.keyCode <= 90) {
+            inputRef.current && inputRef.current.focus();
+        } else if(e.keyCode == 13){
+            handleAddtask();
+        }
+    }
+    useEffect(() => {
         const tasks = JSON.parse(localStorage.getItem('TASKS'));
-       tasks?.length >= 1 && dispatch(recallTasks(tasks));
-    },[]);
+        tasks?.length >= 1 && dispatch(recallTasks(tasks));
 
-    useEffect(()=>{tasks?.length >= 1 && localStorage.setItem('TASKS',JSON.stringify(tasks))},[tasks]);
+        document.addEventListener('keydown', handleKeyDown);
+
+        return () => { document.removeEventListener('keydown', handleKeyDown); }
+    }, []);
+
+    useEffect(() => {
+        tasks?.length >= 1 && localStorage.setItem('TASKS', JSON.stringify(tasks))
+    }, [tasks]);
 
     return(
         <div>
@@ -25,6 +38,6 @@ const Task = () => {
             <input id="input" type="text" ref={inputRef}></input><button onClick={handleAddtask}>Add Task</button>
         </div>
     );
-}
+    }
 
 export default Task;
