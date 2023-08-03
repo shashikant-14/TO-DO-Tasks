@@ -12,11 +12,15 @@ const taskSlice = createSlice({
 
         removetask(state,action){
             state.tasks = state.tasks.filter(task=>task.id!==action.payload);
+        },
+
+        recallTasks(state,action){
+            state.tasks = action.payload;
         }
     }
 });
 
-export const {fetchtasks, removetask} = taskSlice.actions;
+export const {fetchtasks, removetask, recallTasks} = taskSlice.actions;
 
 export const gettasks = (data) => dispatch =>{
     dispatch(fetchtasks(data));
