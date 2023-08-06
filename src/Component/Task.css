@@ -28,3 +28,7 @@ li .tasklist{
     word-wrap: break-word;
     width:70%;
 }
+
+.completedTask{
+    background-color: green;
+}

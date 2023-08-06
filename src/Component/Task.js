@@ -29,7 +29,7 @@ const Task = () => {
     }, []);
 
     useEffect(() => {
-        tasks?.length >= 1 && localStorage.setItem('TASKS', JSON.stringify(tasks))
+        localStorage.setItem('TASKS', JSON.stringify(tasks))
     }, [tasks]);
 
     return(

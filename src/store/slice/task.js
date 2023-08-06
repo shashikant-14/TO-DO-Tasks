@@ -7,7 +7,7 @@ const taskSlice = createSlice({
     },
     reducers : {
         fetchtasks(state,action){
-            state.tasks.push({id:Date.now(), name:action.payload});
+            state.tasks.push({id:Date.now(), name:action.payload, status:'Pending'});
         },
 
         removetask(state,action){
@@ -16,11 +16,20 @@ const taskSlice = createSlice({
 
         recallTasks(state,action){
             state.tasks = action.payload;
+        },
+
+        updateTask(state,action){
+            state.tasks.forEach(task => {
+                if(task.id == action.payload) {
+                    task.status = 'Completed'
+                }
+
+            });
         }
     }
 });
 
-export const {fetchtasks, removetask, recallTasks} = taskSlice.actions;
+export const {fetchtasks, removetask, recallTasks, updateTask} = taskSlice.actions;
 
 export const gettasks = (data) => dispatch =>{
     dispatch(fetchtasks(data));
